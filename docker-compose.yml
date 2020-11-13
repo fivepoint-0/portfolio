@@ -1,0 +1,28 @@
+version: "3"
+services:
+  site:
+      build: "./site"
+      depends_on:
+        - api
+      volumes:
+        - ./site:/opt/app
+
+  api:
+    build: "./api"
+    depends_on:
+      - api-db
+    volumes:
+      - ./api:/opt/app
+
+  api-db:
+    environment:
+      - MONGO_INITDB_DATABASE=db
+      - MONGO_INITDB_ROOT_USERNAME=usernameGoHere
+      - MONGO_INITDB_ROOT_PASSWORD=pwdGoHere
+    image: mongo
+    container_name: 'api-mongo-container'
+    volumes:
+      - ./init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
+      - ./mongo-volume:/data/db
+    ports:
+      - '27017-27019:27017-27019'
