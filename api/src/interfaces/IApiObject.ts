@@ -1,0 +1,1 @@
+export default interface IApiObject { id?: number, [key: string]: any }
