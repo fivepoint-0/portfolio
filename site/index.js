@@ -1,4 +1,4 @@
-setInterval(() => {
+setTimeout(() => {
   console.log("====================================")
   console.log("||||||||||||SITE WORKING||||||||||||")
   console.log("====================================")
