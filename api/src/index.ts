@@ -6,7 +6,11 @@ import IApiRequestOptions from './interfaces/IApiRequestOptions'
 import { Api } from './util'
 import HttpMethod from './models/HttpMethod'
 import Response from './models/Response'
-
+setTimeout(() => {
+  console.log("====================================")
+  console.log("||||||||||||API  WORKING||||||||||||")
+  console.log("====================================")
+}, 5000)
 dotenv.config()
 
 const app = express()
@@ -79,4 +83,4 @@ app.use('*/:resource/(:id|)', async (req, res) => {
   }
 })
 
-app.listen(3000, () => {console.log("listening")})
+app.listen(3000, () => {console.log("listening on PORT 3000")})

@@ -6,14 +6,16 @@ services:
         - api
       volumes:
         - ./site:/opt/app
-
+      ports:
+        - '8000:8080'
   api:
     build: "./api"
     depends_on:
       - api-db
     volumes:
       - ./api:/opt/app
-
+    ports:
+      - '3000:3000'
   api-db:
     environment:
       - MONGO_INITDB_DATABASE=db
